@@ -16,18 +16,19 @@ Input.propTypes = {
 Input.defaultProps = {
     required: false,
     className: '',
-    id: PropTypes.string
+    id: '',
 }
 
-export default function Input({ value, placeholder, onChange, required, className, id }) {
+export default function Input({ value, placeholder, onChange, required, className, id, ...rest }) {
     return (
         <input
             value={value}
             placeholder={placeholder}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={(e) => onChange(e)}
             required={required}
             className={cx(styles.input, className)}
             id={id}
+            data-testid={rest['data-testid']}
         />
     );
 }

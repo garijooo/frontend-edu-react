@@ -18,14 +18,14 @@ export default function Form({ label }) {
     const [description, setDescription] = useState('');
 
     const onSubmitHandler = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         console.log(`${title} ${description}`)
     }
 
     return (
         <form 
             className={styles.form}
-            onSubmit={(e) => onSubmitHandler(e)}
+            onSubmit={onSubmitHandler}
         >
             <h2>{label}</h2>
             <label 
@@ -54,12 +54,10 @@ export default function Form({ label }) {
                     id="description"
                 />
             </label>
-            <div className={styles.button}>
-                <ActionButton>
-                    <AiOutlinePlus />
-                    Add
-                </ActionButton>
-            </div>
+            <ActionButton>
+                <AiOutlinePlus />
+                Add
+            </ActionButton>
         </form>
     );
 }
