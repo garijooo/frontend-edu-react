@@ -12,6 +12,7 @@ export default function ActionButton({ children, ...rest }) {
 
     return (
         <button
+            data-testid={rest['data-testid']}
             type={rest.onClick ? 'button' : 'submit'}
             onClick={rest.onClick}
             className={cx(styles.button, rest.className)}
