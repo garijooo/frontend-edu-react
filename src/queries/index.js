@@ -10,3 +10,12 @@ export const GetAllNotesByAuthorId = gql(`
     }
   }
 `);
+
+export const GetAuthor = gql(`
+  query GetAuthor($id: ID!) {
+    getAuthor(id: $id) {
+        id  
+        username
+    }
+  }
+`);
