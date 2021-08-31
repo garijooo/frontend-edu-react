@@ -1,7 +1,0 @@
-query GetAllNotesByAuthorId($id: ID!) {
-  getAllNotesByAuthor(id: $id) {
-		title
-  	text
-  	authorId
-  }
-}

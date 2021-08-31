@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Main from './components/Pages/Main';
+import Note from './components/Pages/Note';
 
 import './styles/index.css';
 
@@ -10,7 +11,8 @@ function App() {
     <main className="app">
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={Main} />
+          <Route exact path="/" component={Main} />
+          <Route exact path="/note/:id" component={Note} />
         </Switch>
       </BrowserRouter>
     </main>

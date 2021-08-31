@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import NoteText from '../../Atoms/NoteText';
 import NoteTitle from '../../Atoms/NoteTitle';
@@ -9,11 +10,11 @@ import styles from './NotePreview.module.css';
 import { NOTE_PREVIEW_TEXT_MAX_LENGTH } from '../../../constants';
 
 NotePreview.propTypes = {
-    key: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
 }
 
-export default function NotePreview({ key, title, ...rest }) {
+export default function NotePreview({ id, title, ...rest }) {
     const [text, setText] = useState('');
 
     useEffect(() => {
@@ -28,11 +29,15 @@ export default function NotePreview({ key, title, ...rest }) {
     
     return (
         <li
-            key={key} 
             className={styles.item}
         >
-            <NoteTitle title={title} />
-            <NoteText text={text}/>
+            <Link 
+                to={`/note/${id}`}
+                className={styles.link}
+            >
+                <NoteTitle title={title} />
+                <NoteText text={text}/>            
+            </Link>
         </li>
     );
 }

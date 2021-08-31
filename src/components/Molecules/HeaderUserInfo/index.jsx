@@ -15,7 +15,7 @@ export default function HeaderUserInfo({ username }) {
 
     return (
         <div className={styles.container}>
-            <h4>{username}</h4>
+            <h4 className={styles.username}>{username}</h4>
             <UserAvatar />
         </div>
     );

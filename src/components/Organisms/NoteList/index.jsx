@@ -22,6 +22,7 @@ export default function NoteList({ notes }) {
             {notes.map((note) => (
                 <NotePreview
                     key={note.id}
+                    id={note.id}
                     title={note.title}
                     text={note.text}
                 />
