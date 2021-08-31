@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import NotePreview from '../../Molecules/NotePreview';
+
 import styles from './NoteList.module.css';
 
 NoteList.propTypes = {
@@ -18,12 +20,11 @@ export default function NoteList({ notes }) {
     return (
         <ul className={styles.list}>
             {notes.map((note) => (
-                <li 
+                <NotePreview
                     key={note.id}
-                    className={styles.item}
-                >
-                    {note.title}
-                </li>
+                    title={note.title}
+                    text={note.text}
+                />
             ))}
         </ul>
     );
