@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
-export const GetAllNotesByAuthorId = gql(`
-    query GetAllNotesByAuthorId($id: ID!) {
+export const GetAllNotesByAuthor = gql(`
+    query GetAllNotesByAuthor($id: ID!) {
     getAllNotesByAuthor(id: $id) {
         id  
         title

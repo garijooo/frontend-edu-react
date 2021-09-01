@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Main from './components/Pages/Main';
-import Note from './components/Pages/Note';
+import NotePage from './components/Pages/NotePage';
 
 import './styles/index.css';
 
@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route exact path="/note/:id" component={Note} />
+          <Route exact path="/note/:id" component={NotePage} />
         </Switch>
       </BrowserRouter>
     </main>

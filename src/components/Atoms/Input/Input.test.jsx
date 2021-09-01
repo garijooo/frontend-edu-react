@@ -8,7 +8,7 @@ describe('Input component', () => {
 
     const onChange = jest.fn()
 
-    it('component renders correctly', () => {
+    it('renders correctly', () => {
         var value = '';
         const { getByTestId }  = render(
             <Input 
@@ -22,7 +22,7 @@ describe('Input component', () => {
         expect(getByTestId('input-element').value).toBe('')
     })
 
-    it('value changes correctly', () => {
+    test('value changes correctly', () => {
         var value = '';
         const { getByTestId } = render(
             <Input 
