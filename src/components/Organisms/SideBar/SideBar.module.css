@@ -5,13 +5,18 @@
 }
 
 .addButton {
+    width: 100%;
+    border-radius: 2px;
+    background-color: #FA8C16;
+}
+
+.link {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 100%;
-    border-radius: 2px;
-    background-color: #FA8C16;
+    color: #fff;
+    text-decoration: none;
 }
 
 .container {

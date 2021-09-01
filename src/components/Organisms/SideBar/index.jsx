@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
 import { get } from 'lodash';
@@ -27,8 +28,10 @@ export default function SideBar() {
         <section className={styles.sidebar}>
             <div className={styles.container}>
                 <ActionButton className={styles.addButton}>
-                    <AiOutlinePlusSquare className={styles.icon} size={16} />
-                    <p className={styles.text}>Create a new Note</p>  
+                    <Link to="/notes/new" className={styles.link}>
+                        <AiOutlinePlusSquare className={styles.icon} size={16} />
+                        <p className={styles.text}>Create a new Note</p>                      
+                    </Link>
                 </ActionButton>
             </div>
             <SearchBar />

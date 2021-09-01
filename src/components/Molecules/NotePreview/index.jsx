@@ -33,7 +33,7 @@ export default function NotePreview({ id, title, ...rest }) {
         >
             <NavLink 
                 activeClassName={styles.active}
-                to={`/note/${id}`}
+                to={`/notes/${id}`}
                 className={styles.link}
             >
                 <NoteTitle title={title} />
