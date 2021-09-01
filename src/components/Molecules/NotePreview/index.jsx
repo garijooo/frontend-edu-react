@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import NoteText from '../../Atoms/NoteText';
 import NoteTitle from '../../Atoms/NoteTitle';
@@ -26,18 +26,19 @@ export default function NotePreview({ id, title, ...rest }) {
         }
         setText('');
     }, [rest]);
-    
+        
     return (
         <li
             className={styles.item}
         >
-            <Link 
+            <NavLink 
+                activeClassName={styles.active}
                 to={`/note/${id}`}
                 className={styles.link}
             >
                 <NoteTitle title={title} />
                 <NoteText text={text}/>            
-            </Link>
+            </NavLink>
         </li>
     );
 }

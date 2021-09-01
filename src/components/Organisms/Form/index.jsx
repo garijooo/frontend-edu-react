@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import { AiOutlinePlus } from 'react-icons/ai'
 
-import Input from '../Input'
-import ActionButton from '../../ActionButton'
+import Input from '../../Atoms/Input'
+import ActionButton from '../../Atoms/ActionButton'
 
 import styles from './Form.module.css';
 
@@ -15,11 +15,11 @@ Form.propTypes = {
 
 export default function Form({ label }) {
     const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    const [text, setText] = useState('');
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        console.log(`${title} ${description}`)
+        console.log(`${title} ${text}`)
     }
 
     return (
@@ -42,16 +42,16 @@ export default function Form({ label }) {
                 />
             </label>
             <label
-                htmlFor="description"
+                htmlFor="text"
                 className={styles.item}
             >
-                Description:
+                Text:
                 <Input
-                    value={description}
-                    placeholder="write description"
-                    onChange={(value) => setDescription(value)}
+                    value={text}
+                    placeholder="write text"
+                    onChange={(value) => setText(value)}
                     required
-                    id="description"
+                    id="text"
                 />
             </label>
             <ActionButton>

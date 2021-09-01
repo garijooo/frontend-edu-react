@@ -24,7 +24,7 @@ export default function Input({ value, placeholder, onChange, required, classNam
         <input
             value={value}
             placeholder={placeholder}
-            onChange={(e) => onChange(e)}
+            onChange={(e) => onChange(e.target.value)}
             required={required}
             className={cx(styles.input, className)}
             id={id}
