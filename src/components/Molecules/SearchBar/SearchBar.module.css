@@ -2,10 +2,17 @@
     position: relative;
 }
 
-.icon {
+.button {
     position: absolute;
     top: 18px;
     right: 8px;
+
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.icon {
     color: #75746f;
     opacity: .5;
 }
