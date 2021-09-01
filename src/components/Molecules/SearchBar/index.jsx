@@ -20,6 +20,7 @@ export default function SearchBar() {
             />
             <AiOutlineSearch 
                 className={styles.icon}
+                size={24}
             />
         </div>
     );
