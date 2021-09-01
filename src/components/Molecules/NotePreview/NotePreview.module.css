@@ -1,0 +1,13 @@
+.item {
+    margin-bottom: 16px;
+
+    cursor: pointer;
+}
+
+.item:hover {
+    background-color: #ffebb0;
+}
+
+.link {
+    color: transparent;
+}
