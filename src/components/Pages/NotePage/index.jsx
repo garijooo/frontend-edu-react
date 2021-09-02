@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import _ from 'lodash';
+import { get } from 'lodash';
 import { useQuery } from '@apollo/client';
 
 import PageWrapper from '../../Templates/PageWrapper';
@@ -19,14 +19,12 @@ NotePage.propTypes = {
 
 export default function NotePage({ match }) {
     const { id } = match.params;
-    console.log(id);
     const { data } = useQuery(GetNote, {
         variables: {
             id,
         }
     })
 
-    console.log(data);
     return (
         <PageWrapper 
             render={() => (
@@ -35,10 +33,10 @@ export default function NotePage({ match }) {
                     Back
                 </Link>
                 <p>
-                    {_.get(data, 'getNote.title')}
+                    {get(data, 'getNote.title', '')}
                 </p>
                 <p>
-                    {_.get(data, 'getNote.text')}
+                    {get(data, 'getNote.text', '')}
                 </p>
             </div>
             )}

@@ -1,13 +1,26 @@
 .item {
-    margin-bottom: 16px;
+    width: 100%;
 
+    box-sizing: border-box;
     cursor: pointer;
 }
 
-.item:hover {
+.link {
+    display: block;
+    width: 100%;
+    padding: 16px;
+
+    box-sizing: border-box;
+    color: transparent;
+
+    text-decoration: none;
+}
+
+.link:hover {
     background-color: #ffebb0;
 }
 
-.link {
-    color: transparent;
+.active, .active:hover {
+    background-color: #ffcc54;
+    opacity: .7;
 }

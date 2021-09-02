@@ -1,0 +1,32 @@
+.sidebar {
+    min-width: 256px;
+    background-color: #ffefd9;
+    /* height: 100%; */
+}
+
+.addButton {
+    width: 100%;
+    border-radius: 2px;
+    background-color: #FA8C16;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    text-decoration: none;
+}
+
+.container {
+    padding: 16px;
+}
+
+.text {
+    margin-left: 4px;
+}
+
+.icon {
+    color: #fff;
+}

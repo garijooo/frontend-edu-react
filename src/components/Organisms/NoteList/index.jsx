@@ -8,25 +8,29 @@ import styles from './NoteList.module.css';
 NoteList.propTypes = {
     notes: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
-            text: PropTypes.string.isRequired,
-            authorId: PropTypes.string.isRequired,
+            id: PropTypes.string,
+            title: PropTypes.string,
+            text: PropTypes.string,
+            authorId: PropTypes.string,
         }),
-    ),
+    ).isRequired,
 };
 
 export default function NoteList({ notes }) {
     return (
         <ul className={styles.list}>
-            {notes.map((note) => (
-                <NotePreview
-                    key={note.id}
-                    id={note.id}
-                    title={note.title}
-                    text={note.text}
-                />
-            ))}
+            {
+                notes === [] 
+                    ? 'No notes yet...' 
+                    : notes.map((note) => (
+                        <NotePreview
+                            key={note.id}
+                            id={note.id}
+                            title={note.title}
+                            text={note.text}
+                        />
+                    ))
+            }
         </ul>
     );
 }
