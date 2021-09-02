@@ -24,7 +24,7 @@ export default function SideBar() {
             id,
         },
     });
-    console.log(data);
+    
     return (
         <section className={styles.sidebar}>
             <div className={styles.container}>

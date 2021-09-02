@@ -1,11 +1,14 @@
 import React from 'react';
 
-import LogoImage from '../../Atoms/LogoImage';
+import styles from './HeaderLogo.module.css';
+import logo from '../../../Images/logo-notepad.png';
 
 export default function HeaderLogo() {
     return (
-        <div>
-            <LogoImage />
-        </div>
+        <img
+            src={logo}
+            alt="logo"
+            className={styles.image}
+        />
     );
 }
