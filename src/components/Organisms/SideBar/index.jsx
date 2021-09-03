@@ -24,12 +24,11 @@ export default function SideBar() {
             id,
         },
     });
-    console.log(data);
     return (
         <section className={styles.sidebar}>
             <div className={styles.container}>
                 <ActionButton className={styles.addButton}>
-                    <Link to="/notes/new" className={styles.link}>
+                    <Link to="/notes/blank" className={styles.link}>
                         <AiOutlinePlusSquare className={styles.icon} size={16} />
                         <p className={styles.text}>Create a new Note</p>                      
                     </Link>
