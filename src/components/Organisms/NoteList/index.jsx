@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import NotePreview from '../../Molecules/NotePreview';
 
@@ -19,18 +19,17 @@ NoteList.propTypes = {
 
 export default function NoteList({ notes }) {
     const [current, setCurrent] = useState(-1);
-    // const history = useHistory();
+    const history = useHistory();
 
     onkeydown = (e) => {
-        console.log(e.key);
-        console.log(current);
         const { key } = e;
-        if (key === 'ArrowDown' && current <= notes.length) {
-            console.log(notes[current].id)
-            // history.push(`/notes/${notes[current]}`)
+        if (key === 'ArrowUp' && current - 1 >= 0) {
+            setCurrent(current - 1);
+            history.push(`/notes/${parseInt(notes[current].id) - 1}`);
         } 
-        else if (key === 'ArrowUp' && current > 0) {
-            console.log(notes[current].id)
+        else if (key === 'ArrowDown' && current + 1 < notes.length) {
+            setCurrent(current + 1);
+            history.push(`/notes/${parseInt(notes[current].id) + 1}`);
         }
     }
 

@@ -21,7 +21,7 @@ export default function NotePreview({ id, mainId, title, onUpdateCurrent, ...res
     const location = useLocation();
 
     useEffect(() => {
-        const current = location.pathname.trim().split('/')[2];
+        const current = location.pathname.split('/')[2];
         if (mainId === current) onUpdateCurrent(id);
     }, []);
 
@@ -38,7 +38,7 @@ export default function NotePreview({ id, mainId, title, onUpdateCurrent, ...res
     return (
         <li
             className={styles.item}
-            onClick={() => onUpdateCurrent(mainId)}
+            onClick={() => onUpdateCurrent(id)}
         >
             <NavLink 
                 activeClassName={styles.active}
