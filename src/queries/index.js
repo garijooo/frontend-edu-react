@@ -11,6 +11,17 @@ export const GetAllNotesByAuthor = gql(`
   }
 `);
 
+export const GetAllNotes = gql(`
+  query GetAllNotes {
+    getAllNotes {
+      id
+      title
+      text
+      authorId
+    }
+  }
+`);
+
 export const GetAuthor = gql(`
   query GetAuthor($id: ID!) {
     getAuthor(id: $id) {
@@ -39,5 +50,11 @@ export const GetNotesAmount = gql(`
 export const AddNote = gql(`
   mutation AddNote($note: NoteInput!, $authorId: String!) {
     addNote(note: $note, authorId: $authorId)
+  }
+`);
+
+export const EditNote = gql(`
+  mutation EditNote($note: NoteInput!) {
+    editNote(note: $note)
   }
 `);

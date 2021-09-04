@@ -1,56 +1,60 @@
 import React, { useEffect, useState } from 'react';
-import { useQuery ,useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
+import { useHistory } from 'react-router-dom';
 import { get } from 'lodash';
 
-import { AddNote, GetNotesAmount } from '../../../queries';
+import useNotesByAuthor from '../../../hooks/useNotesByAuthor';
+import useNotesAmount from '../../../hooks/useNotesAmount';
+
+import { AddNote } from '../../../queries';
 
 import PageWrapper from '../../Templates/PageWrapper';
 import NoteForm from '../../Templates/NoteForm';
 
+import { BLANK_NOTE_DELAY } from '../../../constants';
+
 export default function Blank() {
+    const history = useHistory();
+
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
-    
-    const query = useQuery(GetNotesAmount);
+
+    const { refetch: update, notes } = useNotesByAuthor(localStorage.getItem('userId'));
+    const { refetch, amount } = useNotesAmount();
+
     const [createNote, { data }] = useMutation(AddNote);
 
-    if (data) console.log(data);
-
-    // if (loading) console.log('loading');
-    // if (error) console.log(error.message);
-
-    const onSubmitHandler = (e) => {
-        e.preventDefault();
-        const amount = get(query, 'data.getNotesAmount', null);
-        if (amount) {
-            createNote({
-                variables: {
-                    note: { text: text, title: title, id: parseInt(amount) - 1 }, 
-                    authorId: localStorage.getItem('userId').toString()
-                  }
-            });    
-        }
-    }
-
     useEffect(() => {
-        const timer = setTimeout(() => {
-            if (title) {
-                console.log(title);
-            }
-        }, 3000);
+        const timer = setTimeout(
+            () => {
+                if (title && amount) {
+                    createNote({
+                        variables: {
+                            note: { text: text, title: title, id: parseInt(amount) + 1 }, 
+                            authorId: localStorage.getItem('userId').toString()
+                        }
+                    });    
+                }
+            }, 
+            BLANK_NOTE_DELAY,
+        );
         return () => clearTimeout(timer);
     }, [title, text]);
 
+    useEffect(() => {
+        const success = get(data, 'addNote', null);
+        if (success) {
+            refetch();
+            update();
+            history.push(`/notes/${amount + 1}`);
+        }
+    }, [data]);
 
     return (
         <PageWrapper 
+            notes={notes}
             render={() => (
                 <>
-                    <form onSubmit={(e) => onSubmitHandler(e)}>
-                        <button type="submit">
-                            submit
-                        </button>
-                    </form>
                     <NoteForm 
                         title={title}
                         text={text}

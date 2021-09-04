@@ -1,8 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
-import { useQuery } from '@apollo/client';
-import { get } from 'lodash';
 
 import { AiOutlinePlusSquare } from 'react-icons/ai';
 
@@ -11,19 +9,20 @@ import SearchBar from '../../Molecules/SearchBar';
 import NoteList from '../NoteList';
 import OptionBar  from '../../Molecules/OptionBar'
 
-import { GetAllNotesByAuthor } from '../../../queries';
-
-
 import styles from './SideBar.module.css';
 
-export default function SideBar() {
-    const id = localStorage.getItem('userId');
+SideBar.propTypes = {
+    notes: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string,
+            title: PropTypes.string,
+            text: PropTypes.string,
+            authorId: PropTypes.string,
+        }),
+    ),
+}
 
-    const { data } = useQuery(GetAllNotesByAuthor, {
-        variables: {
-            id,
-        },
-    });
+export default function SideBar({ notes = [] }) {
     return (
         <section className={styles.sidebar}>
             <div className={styles.container}>
@@ -36,7 +35,7 @@ export default function SideBar() {
             </div>
             <SearchBar />
             <OptionBar />
-            <NoteList notes={get(data, 'getAllNotesByAuthor', [])} />
+            <NoteList notes={notes} />
         </section>
     );
 }
