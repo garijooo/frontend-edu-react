@@ -30,8 +30,14 @@ export const GetNote = gql(`
   }
 `);
 
+export const GetNotesAmount = gql(`
+  query GetNotesAmount {
+    getNotesAmount
+  }
+`);
+
 export const AddNote = gql(`
-  mutation AddNote($title: String!, $text: String!, $authorId: String!) {
-    addNote(note: { title: $title, text: $text}, authorId: $authorId)
+  mutation AddNote($note: NoteInput!, $authorId: String!) {
+    addNote(note: $note, authorId: $authorId)
   }
 `);

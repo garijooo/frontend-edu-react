@@ -11,10 +11,10 @@ import SideBar from '../../Organisms/SideBar';
 import styles from './PageWrapper.module.css';
 
 PageWrapper.propTypes = {
-    render: PropTypes.func.isRequirsed,
+    render: PropTypes.func,
 }
 
-export default function PageWrapper({ render }) {
+export default function PageWrapper({ render = null }) {
     const id = localStorage.getItem('userId');
 
     const { data, loading } = useQuery(GetAuthor, {
