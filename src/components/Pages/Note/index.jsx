@@ -27,8 +27,8 @@ Note.propTypes = {
 export default function Note({ match }) {
     const { id } = match.params;
 
-    const { notes } = useNotesByAuthor(localStorage.getItem('userId'));
-    const { note } = useNote(id);
+    const { notes, refetch } = useNotesByAuthor(localStorage.getItem('userId'));
+    const { note, refetch: update } = useNote(id);
 
     const [title, setTitle] = useState(note.title);
     const [text, setText] = useState(note.text);
@@ -70,6 +70,8 @@ export default function Note({ match }) {
         () => {
             const success = get(data, 'editNote', null);
             if (success) {
+                refetch();
+                update();
                 setIsNotificationShown(true);
                 setTimeout(
                     () => {
@@ -88,13 +90,13 @@ export default function Note({ match }) {
             notes={notes}
             render={() => (
                <>
-                    <span className={notificationClass}>Note has been edited!</span>
                     <NoteForm 
                         title={title}
                         text={text}
                         onTitleChange={(value) => setTitle(value)}
                         onTextChange={(value) => setText(value)}    
                     />
+                    <span className={notificationClass}>Note has been edited!</span>
                </>
             )}
         />

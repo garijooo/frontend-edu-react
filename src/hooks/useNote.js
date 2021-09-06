@@ -8,7 +8,6 @@ export default function useNote(id) {
         variables: {
             id,
         },
-        pollInterval: 1000,
     });
     const note = {
         title: get(data, 'getNote.title', ''),

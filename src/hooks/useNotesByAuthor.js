@@ -8,7 +8,6 @@ export default function useNotesByAuthor(id) {
         variables: {
             id,
         },
-        pollInterval: 1000,
     });
     return { notes: get(data, 'getAllNotesByAuthor', []), refetch }
 }
