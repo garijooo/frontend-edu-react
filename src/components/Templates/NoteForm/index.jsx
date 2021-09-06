@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import Input from '../../Atoms/Input';
 import TextArea from '../../Atoms/TextArea';
-// import ActionButton from '../../Atoms/ActionButton';
 
 import styles from './NoteForm.module.css';
 
@@ -12,17 +11,11 @@ NoteForm.propTypes = {
     text: PropTypes.string,
     onTitleChange: PropTypes.func,
     onTextChange: PropTypes.func,
+    onKeyPressed: PropTypes.func,
 }
 
-export default function NoteForm({ title = '', text = '', onTitleChange = null, onTextChange = null}) {
-    onkeydown = () => {
-        // console.lxog(e.key)
-
-        // console.log(titleRef);
-        // if (e.key === 'ArrowDown') textRef.current.focus();
-        // if (e.key === 'ArrowUp') titleRef.current.focus();
-        
-    }
+export default function NoteForm({ title = '', text = '', onTitleChange = null, onTextChange = null, onKeyPressed = null}) {
+    onkeydown = (e) => onKeyPressed && onKeyPressed(e.key);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();

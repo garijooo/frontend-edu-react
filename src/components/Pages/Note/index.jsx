@@ -33,6 +33,8 @@ export default function Note({ match }) {
     const [title, setTitle] = useState(note.title);
     const [text, setText] = useState(note.text);
 
+    const [pressedKey, setPressedKey] = useState('');
+
     const [isNotificationShown, setIsNotificationShown] = useState(false);
 
     const [editNote, { data }] = useMutation(EditNote);
@@ -88,13 +90,16 @@ export default function Note({ match }) {
     return (
         <PageWrapper 
             notes={notes}
+            pressedKey={pressedKey}
+            onKeyPressed={(value) => setPressedKey(value)}
             render={() => (
                <>
                     <NoteForm 
                         title={title}
                         text={text}
                         onTitleChange={(value) => setTitle(value)}
-                        onTextChange={(value) => setText(value)}    
+                        onTextChange={(value) => setText(value)} 
+                        onKeyPressed={(value) => setPressedKey(value)}   
                     />
                     <span className={notificationClass}>Note has been edited!</span>
                </>
