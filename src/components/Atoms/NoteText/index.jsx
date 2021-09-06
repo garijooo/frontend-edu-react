@@ -7,9 +7,14 @@ NoteText.propTypes = {
     text: PropTypes.string.isRequired,
 }
 
-export default function NoteText({ text }) {
+export default function NoteText({ text, ...rest }) {
 
     return (
-        <p className={styles.text}>{text}</p>
+        <p
+            className={styles.text}
+            data-testid={rest['data-testid']}
+        >
+            {text}
+        </p>
     );
 }
