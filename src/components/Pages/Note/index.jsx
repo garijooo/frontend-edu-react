@@ -22,7 +22,6 @@ Note.propTypes = {
             id: PropTypes.string
         })
     }).isRequired,
-    onKeyPressed: PropTypes.func,
 }
 
 export default function Note({ match }) {
@@ -92,6 +91,7 @@ export default function Note({ match }) {
         <PageWrapper 
             notes={notes}
             pressedKey={pressedKey}
+            onKeyPressed={(value) => setPressedKey(value)}
             render={() => (
                <>
                     <NoteForm 

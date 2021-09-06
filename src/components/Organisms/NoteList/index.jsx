@@ -16,10 +16,10 @@ NoteList.propTypes = {
         }),
     ).isRequired,
     pressedKey: PropTypes.string,
-
+    onKeyPressed: PropTypes.func,
 };
 
-export default function NoteList({ notes, pressedKey = '' }) {
+export default function NoteList({ notes, pressedKey = '', onKeyPressed = null }) {
     const [current, setCurrent] = useState(-1);
     const history = useHistory();
 
@@ -27,10 +27,12 @@ export default function NoteList({ notes, pressedKey = '' }) {
         console.log(pressedKey);
         if (pressedKey === 'ArrowUp' && current - 1 >= 0) {
             setCurrent(current - 1);
+            if (onKeyPressed) onKeyPressed('');
             history.push(`/notes/${parseInt(notes[current - 1].id)}`);
         } 
         else if (pressedKey === 'ArrowDown' && current + 1 < notes.length) {
             setCurrent(current + 1);
+            onKeyPressed('');
             history.push(`/notes/${parseInt(notes[current + 1].id)}`);
         }
     }, [pressedKey]);

@@ -21,9 +21,10 @@ PageWrapper.propTypes = {
         }),
     ),
     pressedKey: PropTypes.string,
+    onKeyPressed: PropTypes.func,
 }
 
-export default function PageWrapper({ render = null, notes = [], pressedKey = '' }) {
+export default function PageWrapper({ render = null, notes = [], pressedKey = '', onKeyPressed = null }) {
     const id = localStorage.getItem('userId');
 
     const { data, loading } = useQuery(GetAuthor, {
@@ -36,7 +37,7 @@ export default function PageWrapper({ render = null, notes = [], pressedKey = ''
         <React.Fragment>
             <PageHeader username={get(data, 'getAuthor.username', '')} />
             <div className={styles.container}>
-                <SideBar notes={notes} pressedKey={pressedKey} />
+                <SideBar notes={notes} pressedKey={pressedKey} onKeyPressed={onKeyPressed} />
                 <section className={styles.content}>
                     {!loading ? render() : 'Loading...'}
                 </section>

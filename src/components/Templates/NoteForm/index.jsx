@@ -15,7 +15,7 @@ NoteForm.propTypes = {
 }
 
 export default function NoteForm({ title = '', text = '', onTitleChange = null, onTextChange = null, onKeyPressed = null}) {
-    onkeydown = (e) => onKeyPressed(e.key);
+    onkeydown = (e) => onKeyPressed && onKeyPressed(e.key);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();

@@ -21,9 +21,10 @@ SideBar.propTypes = {
         }),
     ),
     pressedKey: PropTypes.string,
+    onKeyPressed: PropTypes.func,
 }
 
-export default function SideBar({ notes = [], pressedKey = '' }) {
+export default function SideBar({ notes = [], pressedKey = '', onKeyPressed = null }) {
     return (
         <section className={styles.sidebar}>
             <div className={styles.container}>
@@ -36,7 +37,7 @@ export default function SideBar({ notes = [], pressedKey = '' }) {
             </div>
             <SearchBar />
             <OptionBar />
-            <NoteList notes={notes} pressedKey={pressedKey} />
+            <NoteList notes={notes} pressedKey={pressedKey} onKeyPressed={onKeyPressed} />
         </section>
     );
 }
