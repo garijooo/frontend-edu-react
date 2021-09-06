@@ -1,0 +1,20 @@
+.optionBar {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 12px;
+    background-color: rgb(240, 228, 240, .3 );
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.filter, .options {
+    border: none;
+    background-color: transparent;
+}
+
+.active {
+    color: #FA8C16;
+}

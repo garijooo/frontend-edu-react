@@ -11,10 +11,18 @@ import SideBar from '../../Organisms/SideBar';
 import styles from './PageWrapper.module.css';
 
 PageWrapper.propTypes = {
-    render: PropTypes.func.isRequirsed,
+    render: PropTypes.func,
+    notes: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string,
+            title: PropTypes.string,
+            text: PropTypes.string,
+            authorId: PropTypes.string,
+        }),
+    ),
 }
 
-export default function PageWrapper({ render }) {
+export default function PageWrapper({ render = null, notes = [] }) {
     const id = localStorage.getItem('userId');
 
     const { data, loading } = useQuery(GetAuthor, {
@@ -27,7 +35,7 @@ export default function PageWrapper({ render }) {
         <React.Fragment>
             <PageHeader username={get(data, 'getAuthor.username', '')} />
             <div className={styles.container}>
-                <SideBar />
+                <SideBar  notes={notes} />
                 <section className={styles.content}>
                     {!loading ? render() : 'Loading...'}
                 </section>

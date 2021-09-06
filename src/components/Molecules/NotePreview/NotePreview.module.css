@@ -16,11 +16,6 @@
     text-decoration: none;
 }
 
-.link:hover {
-    background-color: #ffebb0;
-}
-
 .active, .active:hover {
-    background-color: #ffcc54;
-    opacity: .7;
+    background-color: rgba(217, 217, 217, 0.35);
 }
