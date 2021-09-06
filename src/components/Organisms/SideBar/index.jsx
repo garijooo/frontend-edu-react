@@ -6,9 +6,10 @@ import { get } from 'lodash';
 
 import { AiOutlinePlusSquare } from 'react-icons/ai';
 
+import ActionButton from '../../Atoms/ActionButton';
 import SearchBar from '../../Molecules/SearchBar';
 import NoteList from '../NoteList';
-import ActionButton from '../../Atoms/ActionButton';
+import OptionBar  from '../../Molecules/OptionBar'
 
 import { GetAllNotesByAuthor } from '../../../queries';
 
@@ -23,7 +24,7 @@ export default function SideBar() {
             id,
         },
     });
-
+    
     return (
         <section className={styles.sidebar}>
             <div className={styles.container}>
@@ -35,6 +36,7 @@ export default function SideBar() {
                 </ActionButton>
             </div>
             <SearchBar />
+            <OptionBar />
             <NoteList notes={get(data, 'getAllNotesByAuthor', [])} />
         </section>
     );

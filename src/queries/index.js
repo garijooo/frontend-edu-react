@@ -23,6 +23,7 @@ export const GetAuthor = gql(`
 export const GetNote = gql(`
   query GetNote($id: ID!) {
     getNote(id: $id) {
+      id
       title
       text
       authorId

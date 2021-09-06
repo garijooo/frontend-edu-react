@@ -13,8 +13,8 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route exact path="/notes/:id" component={NotePage} />
           <Route exact path="/notes/new" component={Blank} />
+          <Route exact path="/notes/:id" component={NotePage} />
         </Switch>
       </BrowserRouter>
     </main>
