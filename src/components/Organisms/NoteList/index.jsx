@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
@@ -15,23 +15,25 @@ NoteList.propTypes = {
             authorId: PropTypes.string,
         }),
     ).isRequired,
+    pressedKey: PropTypes.string,
+
 };
 
-export default function NoteList({ notes }) {
+export default function NoteList({ notes, pressedKey = '' }) {
     const [current, setCurrent] = useState(-1);
     const history = useHistory();
 
-    onkeydown = (e) => {
-        const { key } = e;
-        if (key === 'ArrowUp' && current - 1 >= 0) {
+    useEffect(() => {
+        console.log(pressedKey);
+        if (pressedKey === 'ArrowUp' && current - 1 >= 0) {
             setCurrent(current - 1);
             history.push(`/notes/${parseInt(notes[current - 1].id)}`);
         } 
-        else if (key === 'ArrowDown' && current + 1 < notes.length) {
+        else if (pressedKey === 'ArrowDown' && current + 1 < notes.length) {
             setCurrent(current + 1);
             history.push(`/notes/${parseInt(notes[current + 1].id)}`);
         }
-    }
+    }, [pressedKey]);
 
     return (
         <ul 

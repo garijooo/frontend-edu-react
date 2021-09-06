@@ -10,11 +10,7 @@ PageHeader.propTypes = {
     username: PropTypes.string,
 }
 
-PageHeader.defaultProps = {
-    username: '',
-}
-
-export default function PageHeader({ username }) {
+export default function PageHeader({ username = '' }) {
 
     return (
         <header className={styles.header}>
