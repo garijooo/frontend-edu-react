@@ -1,41 +1,41 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
-import { useQuery } from '@apollo/client';
-import { get } from 'lodash';
 
 import { AiOutlinePlusSquare } from 'react-icons/ai';
 
+import ActionButton from '../../Atoms/ActionButton';
 import SearchBar from '../../Molecules/SearchBar';
 import NoteList from '../NoteList';
-import ActionButton from '../../Atoms/ActionButton';
-
-import { GetAllNotesByAuthor } from '../../../queries';
-
+import OptionBar  from '../../Molecules/OptionBar'
 
 import styles from './SideBar.module.css';
 
-export default function SideBar() {
-    const id = localStorage.getItem('userId');
+SideBar.propTypes = {
+    notes: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string,
+            title: PropTypes.string,
+            text: PropTypes.string,
+            authorId: PropTypes.string,
+        }),
+    ),
+}
 
-    const { data } = useQuery(GetAllNotesByAuthor, {
-        variables: {
-            id,
-        },
-    });
-
+export default function SideBar({ notes = [] }) {
     return (
         <section className={styles.sidebar}>
             <div className={styles.container}>
                 <ActionButton className={styles.addButton}>
-                    <Link to="/notes/new" className={styles.link}>
+                    <Link to="/notes/blank" className={styles.link}>
                         <AiOutlinePlusSquare className={styles.icon} size={16} />
                         <p className={styles.text}>Create a new Note</p>                      
                     </Link>
                 </ActionButton>
             </div>
             <SearchBar />
-            <NoteList notes={get(data, 'getAllNotesByAuthor', [])} />
+            <OptionBar />
+            <NoteList notes={notes} />
         </section>
     );
 }

@@ -13,13 +13,7 @@ Input.propTypes = {
     id: PropTypes.string,
 }
 
-Input.defaultProps = {
-    required: false,
-    className: '',
-    id: '',
-}
-
-export default function Input({ value, placeholder, onChange, required, className, id, ...rest }) {
+export default function Input({ value, placeholder, onChange, required = false, className = '', id = '', ...rest }) {
     return (
         <input
             value={value}
@@ -28,6 +22,7 @@ export default function Input({ value, placeholder, onChange, required, classNam
             required={required}
             className={cx(styles.input, className)}
             id={id}
+            autoFocus={rest.autoFocus}
             data-testid={rest['data-testid']}
         />
     );

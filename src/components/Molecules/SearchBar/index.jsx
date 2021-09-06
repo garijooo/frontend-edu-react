@@ -9,8 +9,13 @@ import styles from './SearchBar.module.css';
 export default function SearchBar() {
     const [searching, setSearching] = useState('');
 
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        console.log('searched');
+    }
+
     return (
-        <div className={styles.searchBar}>
+        <form className={styles.searchBar} onSubmit={onSubmitHandler}>
             <Input 
                 type="search" 
                 onChange={(value) => setSearching(value)} 
@@ -18,10 +23,12 @@ export default function SearchBar() {
                 placeholder="Search..."
                 className={styles.input} 
             />
-            <AiOutlineSearch 
-                className={styles.icon}
-                size={18}
-            />
-        </div>
+            <button type="submit" className={styles.button}>
+                <AiOutlineSearch 
+                    className={styles.icon}
+                    size={18}
+                />
+            </button>
+        </form>
     );
 }
