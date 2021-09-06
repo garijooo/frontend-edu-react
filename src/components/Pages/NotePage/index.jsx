@@ -38,6 +38,9 @@ export default function NotePage({ match }) {
                 <p>
                     {get(data, 'getNote.text', '')}
                 </p>
+                <form>
+                    <input type="text"  />
+                </form>
             </div>
             )}
         />

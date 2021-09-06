@@ -25,11 +25,11 @@ export default function NoteList({ notes }) {
         const { key } = e;
         if (key === 'ArrowUp' && current - 1 >= 0) {
             setCurrent(current - 1);
-            history.push(`/notes/${parseInt(notes[current].id) - 1}`);
+            history.push(`/notes/${parseInt(notes[current - 1].id)}`);
         } 
         else if (key === 'ArrowDown' && current + 1 < notes.length) {
             setCurrent(current + 1);
-            history.push(`/notes/${parseInt(notes[current].id) + 1}`);
+            history.push(`/notes/${parseInt(notes[current + 1].id)}`);
         }
     }
 
