@@ -2,6 +2,8 @@
 /** */
 
 export const NOTE_PREVIEW_TEXT_MAX_LENGTH = 30;
+export const NOTE_PREVIEW_TITLE_MAX_LENGTH = 20;
+
 /** */
 
 export const DEFAULT_ICON_SIZE = 18;
