@@ -24,7 +24,6 @@ export default function NoteList({ notes, pressedKey = '', onKeyPressed = null }
     const history = useHistory();
 
     useEffect(() => {
-        console.log(pressedKey);
         if (pressedKey === 'ArrowUp' && current - 1 >= 0) {
             setCurrent(current - 1);
             if (onKeyPressed) onKeyPressed('');

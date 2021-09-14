@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.title {
+    margin-left: 8px;
+}
+
+.menu {
+    margin-right: 8px;
+}
