@@ -10,16 +10,14 @@ IconButton.propTypes = {
     className: PropTypes.string,
 }
 
-export default function IconButton({ onClick, children, className = '' }) {
+export default function IconButton({ onClick, children, className = ''}) {
     return (
-       <div className={styles.button}>
             <button
-                className={cx(styles.icon, className)}
+                className={cx(styles.button, className)}
                 type="button"
                 onClick={onClick}
             >
                 {children}
             </button>
-       </div>
     );
 }

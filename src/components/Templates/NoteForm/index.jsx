@@ -28,6 +28,7 @@ export default function NoteForm({ title = '', text = '', onTitleChange = null, 
             className={styles.form}
         >
             <Input 
+                type="text"
                 value={title}
                 onChange={(value) => onTitleChange(value)}
                 placeholder="Title..."

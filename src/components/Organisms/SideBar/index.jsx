@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlinePlusSquare } from 'react-icons/ai';
 
 import ActionButton from '../../Atoms/ActionButton';
-import SearchBar from '../../Molecules/SearchBar';
+import SearchBarCommon from '../../Molecules/SearchBarCommon';
 import NoteList from '../NoteList';
 import OptionBar  from '../../Molecules/OptionBar'
 
@@ -35,7 +35,7 @@ export default function SideBar({ notes = [], pressedKey = '', onKeyPressed = nu
                     </Link>
                 </ActionButton>
             </div>
-            <SearchBar />
+            <SearchBarCommon />
             <OptionBar />
             <NoteList notes={notes} pressedKey={pressedKey} onKeyPressed={onKeyPressed} />
         </section>

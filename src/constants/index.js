@@ -5,9 +5,12 @@ export const NOTE_PREVIEW_TEXT_MAX_LENGTH = 30;
 export const NOTE_PREVIEW_TITLE_MAX_LENGTH = 20;
 
 /** */
-export const DEFAULT_ICON_BUTTON_SIZE = 24;
+export const DEFAULT_ICON_BUTTON_SIZE = 20;
 export const DEFAULT_ICON_SIZE = 18;
 /** */
+
+
+export const DEFAULT_INPUT_MAX_LENGTH = 45;
 
 export const BLANK_NOTE_DELAY = 500;
 export const NOTE_EDIT_DELAY = BLANK_NOTE_DELAY;

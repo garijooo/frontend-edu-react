@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { get } from 'lodash';
@@ -6,26 +6,23 @@ import { useQuery } from '@apollo/client';
 import { GetAuthor } from '../../../queries';
 
 import PageHeader from '../../Organisms/PageHeader';
-import SideBar from '../../Organisms/SideBar';
+import Navbar from '../../Organisms/Navbar';
 
 import styles from './PageWrapper.module.css';
 
 PageWrapper.propTypes = {
     render: PropTypes.func,
-    notes: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string,
-            title: PropTypes.string,
-            text: PropTypes.string,
-            authorId: PropTypes.string,
-        }),
-    ),
-    pressedKey: PropTypes.string,
-    onKeyPressed: PropTypes.func,
 }
 
-export default function PageWrapper({ render = null, notes = [], pressedKey = '', onKeyPressed = null }) {
+export default function PageWrapper({ render = null }) {
     const id = localStorage.getItem('userId');
+
+    const [isOpened, setIsOpened] = useState(true)
+    const [displayMode, setDisplayMode] = useState('list')
+    
+    const onToggleHandler = () => setIsOpened(!isOpened)
+    const onDisplayModeChangeHandler = (value) => setDisplayMode(value)
+    
 
     const { data, loading } = useQuery(GetAuthor, {
         variables: {
@@ -35,9 +32,14 @@ export default function PageWrapper({ render = null, notes = [], pressedKey = ''
 
     return (
         <React.Fragment>
-            <PageHeader username={get(data, 'getAuthor.username', '')} />
+            <PageHeader 
+                username={get(data, 'getAuthor.username', '')} 
+                onToggle={onToggleHandler}
+                onDisplayModeChange={onDisplayModeChangeHandler}
+                displayMode={displayMode}
+            />
             <div className={styles.container}>
-                <SideBar notes={notes} pressedKey={pressedKey} onKeyPressed={onKeyPressed} />
+                <Navbar />
                 <section className={styles.content}>
                     {!loading ? render() : 'Loading...'}
                 </section>

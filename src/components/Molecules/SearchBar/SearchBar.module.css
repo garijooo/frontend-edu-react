@@ -1,33 +1,29 @@
-.searchBar {
+.bar {
     position: relative;
-    border-top: 1px solid gainsboro;
-    border-bottom: 1px solid gainsboro;
+    flex-grow: 3;
+    /* background: lime; */
+}
+
+.search {
+    box-sizing: border-box;
+
+    background-color: rgba(0, 0, 0, .05);
+    border-radius: 8px;
+
+    padding: 16px;
+    padding-left: 48px;
+
+    width: 100%;
 }
 
 .button {
     position: absolute;
-    top: 18px;
-    right: 8px;
-
-    background: transparent;
-    border: none;
-    cursor: pointer;
+    top: 0;
+    left: 8px;
 }
 
-.icon {
-    color: #75746f;
-    opacity: .5;
-}
-
-.input {
-    width: 100%;
-    padding: 16px;
-    font-size: 12px;
-    line-height: 12px;
-    border: none;
-}
-
-.input::placeholder {
-    color: #75746f;
-    opacity: .5;
+.focused {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    color: rgba(0, 0, 0, .7);
 }

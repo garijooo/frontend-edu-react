@@ -1,34 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { AiOutlineSearch } from 'react-icons/ai'
 
-import { AiOutlineSearch } from 'react-icons/ai';
+import Input from '../../Atoms/Input'
+import IconButton from '../../Atoms/IconButton'
 
-import Input from '../../Atoms/Input';
+import styles from './Searchbar.module.css'
 
-import styles from './SearchBar.module.css';
+import { DEFAULT_ICON_BUTTON_SIZE } from '../../../constants'
 
-export default function SearchBar() {
-    const [searching, setSearching] = useState('');
+SearchBar.propTypes = {
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onSearch: PropTypes.func.isRequired,
+}
 
-    const onSubmitHandler = (e) => {
-        e.preventDefault();
-        console.log('searched');
-    }
+export default function SearchBar({ value, onChange, onSearch }) {
+    const [isFocused, setIsFocused] = useState(false)
 
     return (
-        <form className={styles.searchBar} onSubmit={onSubmitHandler}>
-            <Input 
-                type="search" 
-                onChange={(value) => setSearching(value)} 
-                value={searching}
-                placeholder="Search..."
-                className={styles.input} 
-            />
-            <button type="submit" className={styles.button}>
+        <div className={styles.bar}>
+            <IconButton className={styles.button} onClick={onSearch}>
                 <AiOutlineSearch 
                     className={styles.icon}
-                    size={18}
+                    size={DEFAULT_ICON_BUTTON_SIZE}
                 />
-            </button>
-        </form>
+            </IconButton>
+            <Input
+                type="search"
+                placeholder="Search..."
+                value={value}
+                onChange={onChange}
+                className={cx(styles.search, {
+                    // [styles.search]: !isFocused,
+                    [styles.focused]: isFocused,
+                })}
+                onFocusChange={(value) => setIsFocused(value)}
+            />
+        </div>
     );
 }
