@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useQuery } from '@apollo/client';
 import { get } from 'lodash';
 
@@ -9,5 +10,6 @@ export default function useNotesByAuthor(id) {
             id,
         },
     });
-    return { notes: get(data, 'getAllNotesByAuthor', []), refetch }
+    const memoizedNotes = useMemo(() => get(data, 'getAllNotesByAuthor', []), [data])
+    return { notes: memoizedNotes, refetch }
 }

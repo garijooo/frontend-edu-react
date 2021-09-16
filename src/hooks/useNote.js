@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useQuery } from '@apollo/client';
 import { get } from 'lodash';
 
@@ -8,10 +9,11 @@ export default function useNote(id) {
         variables: {
             id,
         },
+        fetchPolicy: 'cache-and-network',
     });
-    const note = {
+    const memoizedNote = useMemo(() => ({
         title: get(data, 'getNote.title', ''),
         text: get(data, 'getNote.text', ''),
-    }
-    return { note, loading, refetch };
+    }), [data])
+    return { memoizedNote, loading, refetch };
 }
