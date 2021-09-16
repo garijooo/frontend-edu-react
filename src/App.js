@@ -1,8 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Note from './components/Pages/Note';
-import Blank from './components/Pages/Blank';
+import Home from './components/Pages/Home';
 
 import './styles/index.css';
 
@@ -11,9 +10,7 @@ function App() {
     <main className="app">
       <BrowserRouter>
         <Switch>
-          <Route exact path="/notes/blank" component={Blank} />
-          <Route exact path="/notes/:id" component={Note} />
-          <Redirect to="/notes/blank" />
+          <Route path="/" component={Home} />
         </Switch>
       </BrowserRouter>
     </main>
