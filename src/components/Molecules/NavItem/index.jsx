@@ -10,9 +10,10 @@ NavItem.propTypes = {
     icon: PropTypes.func.isRequired,
     path: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
 }
 
-export default function NavItem({ icon, path, title }) {
+export default function NavItem({ icon, path, title, onClick }) {
 
     return (
       <li className={styles.item}>
@@ -20,6 +21,7 @@ export default function NavItem({ icon, path, title }) {
             to={path}
             className={styles.link}
             activeClassName={styles.active}
+            onClick={() => onClick(title)}
         >
         <NavIcon>
           {icon()}

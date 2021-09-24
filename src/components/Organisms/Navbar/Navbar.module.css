@@ -6,3 +6,17 @@
     width: 280px;
     list-style: none;
 }
+
+.hidden, .hidden li {
+    width: 46px;
+}
+
+.hidden li a {
+    border-radius: 50%;
+    margin-left: 9px;
+    padding: 15px;
+}
+
+.hidden li a h2 {
+    display: none;
+}

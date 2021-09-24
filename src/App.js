@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import Home from './components/Pages/Home';
+import HomeContainer from './components/Pages/Home/HomeContainer';
 
 import './styles/index.css';
 
@@ -10,7 +10,10 @@ function App() {
     <main className="app">
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={Home} />
+          <Route exact path="/home" component={HomeContainer} />
+          <Route exact path="/notifications" component={HomeContainer} />
+          <Route exact path="/basket" component={HomeContainer} />
+          <Redirect to="/home" />
         </Switch>
       </BrowserRouter>
     </main>

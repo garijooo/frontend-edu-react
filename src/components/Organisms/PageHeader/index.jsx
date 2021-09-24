@@ -12,11 +12,11 @@ PageHeader.propTypes = {
     onToggle: PropTypes.func.isRequired,
     onDisplayModeChange: PropTypes.func.isRequired,
     displayMode: PropTypes.string.isRequired,
+    pageTitle: PropTypes.string.isRequired,
 }
 
-export default function PageHeader({ username = '', onToggle, onDisplayModeChange, displayMode }) {
+export default function PageHeader({ username = '', onToggle, onDisplayModeChange, displayMode, pageTitle }) {
     console.log(username)
-    const [title, setTitle] = useState('Notes')
     const [search, setSearch] = useState('')
 
     const onSearchHandler = () => {
@@ -34,7 +34,7 @@ export default function PageHeader({ username = '', onToggle, onDisplayModeChang
     return (
         <header className={styles.header}>
             <HeaderTitle 
-                title={title} 
+                title={pageTitle} 
                 onClick={onToggle}
             />
             <SearchBar  
@@ -48,7 +48,6 @@ export default function PageHeader({ username = '', onToggle, onDisplayModeChang
                 onDisplayModeChange={onDisplayModeChange}
                 displayMode={displayMode}
             />
-            <p onClick={() => setTitle('Notes')}>test</p>
         </header>
     );
 }

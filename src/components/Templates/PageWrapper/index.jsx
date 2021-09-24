@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 import { GetAuthor } from '../../../queries';
 
 import PageHeader from '../../Organisms/PageHeader';
-import Navbar from '../../Organisms/Navbar';
+import Navbar from '../../Organisms/Navbar/Navbar';
 
 import styles from './PageWrapper.module.css';
 
@@ -20,6 +20,9 @@ export default function PageWrapper({ render = null }) {
     const [isOpened, setIsOpened] = useState(true)
     const [displayMode, setDisplayMode] = useState('list')
     
+    const [pageTitle, setPageTitle] = useState('Notes')
+
+
     const onToggleHandler = () => setIsOpened(!isOpened)
     const onDisplayModeChangeHandler = (value) => setDisplayMode(value)
     
@@ -37,9 +40,13 @@ export default function PageWrapper({ render = null }) {
                 onToggle={onToggleHandler}
                 onDisplayModeChange={onDisplayModeChangeHandler}
                 displayMode={displayMode}
+                pageTitle={pageTitle}
             />
             <div className={styles.container}>
-                <Navbar />
+                <Navbar
+                    isOpened={isOpened}
+                    onPageTitleChange={(value) => setPageTitle(value)}
+                />
                 <section className={styles.content}>
                     {!loading ? render() : 'Loading...'}
                 </section>
