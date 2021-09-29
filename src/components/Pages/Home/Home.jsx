@@ -21,6 +21,7 @@ export default function Home({ title, text, onTitleChange ,onTextChange }) {
                         text={text}
                         onTitleChange={onTitleChange}
                         onTextChange={onTextChange}
+                        isExpanded={false}
                     />
                 </>
             )}

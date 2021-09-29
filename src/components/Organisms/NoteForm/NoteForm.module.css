@@ -1,4 +1,4 @@
-.modal {
+.form {
     width: 50%;
     min-width: 342px;
 
@@ -6,6 +6,8 @@
     box-shadow: rgba(0, 0, 0, .3) 0px 3px 8px;
     padding: 8px 16px;
     box-sizing: border-box;
+
+    position: relative;
 }
 
 .title, .text {
@@ -30,4 +32,18 @@
     font-size: 14px;
     font-weight: 500;
     color: rgba(0, 0, 0, .8);
+}
+
+.textAreaHidden {
+    display: none;
+}
+
+.titleHidden {
+    margin-bottom: 0;
+}
+
+.buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
