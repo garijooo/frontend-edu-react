@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { useQuery } from '@apollo/client'
+import { get } from 'lodash'
+import cx from 'classnames'
 
-import { get } from 'lodash';
-import { useQuery } from '@apollo/client';
-import { GetAuthor } from '../../../queries';
+import PageHeader from '../../Organisms/PageHeader'
+import Navbar from '../../Organisms/Navbar/Navbar'
 
-import PageHeader from '../../Organisms/PageHeader';
-import Navbar from '../../Organisms/Navbar/Navbar';
+import { GetAuthor } from '../../../queries'
 
-import styles from './PageWrapper.module.css';
+import styles from './PageWrapper.module.css'
 
 PageWrapper.propTypes = {
     render: PropTypes.func,
 }
 
 export default function PageWrapper({ render = null }) {
-    const id = localStorage.getItem('userId');
+    const id = localStorage.getItem('userId')
 
     const [isOpened, setIsOpened] = useState(true)
     const [displayMode, setDisplayMode] = useState('list')
@@ -47,7 +48,7 @@ export default function PageWrapper({ render = null }) {
                     isOpened={isOpened}
                     onPageTitleChange={(value) => setPageTitle(value)}
                 />
-                <section className={styles.content}>
+                <section className={cx(styles.content, {[styles.hidden]: !isOpened})}>
                     {!loading ? render() : 'Loading...'}
                 </section>
             </div>

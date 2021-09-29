@@ -19,7 +19,8 @@ export default function Navbar({ isOpened, onPageTitleChange }) {
     const [isHovered, setIsHovered] = useState(false)
     
     const memoizedNavbarClass = useMemo(() => cx(styles.nav, {
-        [styles.hidden]: !isOpened && !isHovered
+        [styles.hidden]: !isOpened && !isHovered,
+        [styles.horeved]: !isOpened && isHovered,
     }), [isOpened, isHovered])
 
     return (

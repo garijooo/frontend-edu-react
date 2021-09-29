@@ -30,6 +30,6 @@
     background-color: #f1f3f4;
 }
 
-.active, .active:hover {
+.active, .active:hover, .active div, .active:hover div {
     background-color: #feefc3;
 }

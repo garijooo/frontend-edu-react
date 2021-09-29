@@ -9,4 +9,9 @@
     flex-grow: 1;
 
     padding: 16px;
+    margin-left: 32px;
+}
+
+.hidden {
+    margin-left: 64px;
 }

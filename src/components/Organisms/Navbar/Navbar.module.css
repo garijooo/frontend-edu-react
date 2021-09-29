@@ -1,22 +1,71 @@
 .nav {
     max-width: 280px;
+    width: 280px;
+    position: relative;
 }
 
 .list {
+    position: absolute;
     width: 280px;
     list-style: none;
+    background: #fff;
+    transition: .3s ease width;
 }
 
-.hidden, .hidden li {
+.list li s h2 {
+    transition: 1s ease display;
+}
+
+.hidden {
+    z-index: 5;
+    position: absolute;
+}
+
+.hidden, .hidden ul, .hidden ul li {
     width: 46px;
 }
 
-.hidden li a {
-    border-radius: 50%;
+.hidden ul li a {
+    /* border-radius: 50%; */
     margin-left: 9px;
-    padding: 15px;
+    padding: 10px 0;
+    width: 46px;
+    height: 46px;
+    /* background: transparent; */
+    /* background: yellow; */
+    display: flex;
+    /* justify-content: center; */
+    background: transparent;
+    box-sizing: border-box;
 }
 
-.hidden li a h2 {
-    display: none;
+.hidden ul li a > div {
+    margin-right: 0;
+    /* background: red; */
+        border-radius: 50%;
+    /* background: #feefc3; */
+    width: 46px;
+    height: 46px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.hidden ul li a h2 {
+    color: transparent;
+    position: absolute;
+}
+
+.horeved {
+    width: 140px;
+    position: absolute;
+}
+
+.horeved ul {
+    /* box-shadow: 2px 0px 20px rgba(50, 50, 93, 0.15); */
+    box-shadow: 5px 0px 5px 0px rgba(50, 50, 50, 0.05);
+}
+
+.horeved ul li a h2 {
+    color: #000;
+    transition: .5s ease color;
 }
